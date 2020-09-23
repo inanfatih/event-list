@@ -1,0 +1,15 @@
+<div>
+  <h1>Upcoming Angular Events</h1>
+  <hr />
+  <div class="row">
+    <div class="col-md-5" *ngFor="let event of events">
+      <app-event-thumbnail
+        [event]="event"
+        (eventClick)="handleEventClicked($event)"
+      ></app-event-thumbnail>
+    </div>
+  </div>
+
+  <app-haydar #hay></app-haydar>
+  <div>{{ hay.haydarling }}</div>
+</div>
