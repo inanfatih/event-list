@@ -10,3 +10,7 @@
     display: none;
   }
 }
+
+li > a.activeOlmasiDurumundaKullanilacakClassAdi {
+  color: #f97924;
+}

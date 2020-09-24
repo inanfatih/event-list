@@ -1,16 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {
+  EventRouteActivatorService,
+  EventListComponent,
+  EventThumbnailComponent,
+  EventDetailsComponent,
+  CreateEventComponent,
+  NavComponent,
+  HaydarComponent,
+  Error404Component,
+} from './exports';
+
+// import { EventRouteActivatorService } from './event-details/event-route-activator.service';
+import { RoutesRoutingModule } from './routes';
 import { AppComponent } from './app.component';
-import { EventListComponent } from './event-list/event-list.component';
-import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
-import { HaydarComponent } from './haydar/haydar.component';
-import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-  declarations: [AppComponent, EventListComponent, EventThumbnailComponent, HaydarComponent, NavComponent],
-  imports: [BrowserModule],
-  providers: [],
+  declarations: [
+    AppComponent,
+    EventListComponent,
+    EventThumbnailComponent,
+    HaydarComponent,
+    NavComponent,
+    EventDetailsComponent,
+    CreateEventComponent,
+    Error404Component,
+  ],
+  imports: [BrowserModule, RoutesRoutingModule],
+  providers: [
+    EventRouteActivatorService,
+    // Asagidakiyle yukaridaki ayni anlama geliyor.
+    // { provide: EventRouteActivatorService, useValue: EventRouteActivatorService},
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function checkDirtyState(component: CreateEventComponent): any {
+  if (component.isDirty) {
+    return window.confirm(
+      'You have not saved this event, do you really want to cancel?'
+    );
+  }
+  return true;
+}
