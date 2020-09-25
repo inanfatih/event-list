@@ -1,3 +1,4 @@
+import { IEvent } from './../shared/event.model';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from './../common/toastr.service';
 import { EventService } from './../shared/event.service';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-list.component.css'],
 })
 export class EventListComponent implements OnInit {
-  events;
+  events: IEvent[];
   constructor(
     private eventService: EventService,
     private toastr: ToastrService,
@@ -25,7 +26,7 @@ export class EventListComponent implements OnInit {
     //   .getEvents()
     //   .subscribe((events) => (this.events = events));
     this.events = this.route.snapshot.data.serafettin;
-    console.log('serafettin', this.route.snapshot);
+    console.log('serafettin', this.route);
   }
   handleThumbnailClick(eventName): any {
     this.toastr.success(eventName);

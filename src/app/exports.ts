@@ -9,3 +9,5 @@ export * from './common/toastr.service';
 export * from './nav/nav.component';
 export * from './haydar/haydar.component';
 export * from './errors/error404/error404.component';
+
+export * from './shared/event.model';

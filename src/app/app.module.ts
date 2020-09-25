@@ -1,3 +1,4 @@
+import { AuthService } from './user/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,7 +13,6 @@ import {
   Error404Component,
 } from './exports';
 
-// import { EventRouteActivatorService } from './event-details/event-route-activator.service';
 import { RoutesRoutingModule } from './routes';
 import { AppComponent } from './app.component';
 
@@ -36,6 +36,7 @@ import { AppComponent } from './app.component';
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState,
     },
+    AuthService,
   ],
   bootstrap: [AppComponent],
 })
