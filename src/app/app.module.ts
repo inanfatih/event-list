@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './user/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import {
 
 import { RoutesRoutingModule } from './routes';
 import { AppComponent } from './app.component';
+import { CreateSessionComponent } from './create-session/create-session.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,14 @@ import { AppComponent } from './app.component';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
+    CreateSessionComponent,
   ],
-  imports: [BrowserModule, RoutesRoutingModule],
+  imports: [
+    BrowserModule,
+    RoutesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     EventRouteActivatorService,
     // Asagidakiyle yukaridaki ayni anlama geliyor.

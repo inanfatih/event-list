@@ -12,10 +12,12 @@
       <em
         *ngIf="
           loginForm.controls.userName?.invalid &&
-          loginForm.controls.userName?.touched && mouseoverLogin
+          loginForm.controls.userName?.touched &&
+          mouseoverLogin
         "
         >Required</em
       >
+
       <input
         id="userName"
         type="text"
@@ -31,7 +33,8 @@
       <em
         *ngIf="
           loginForm.controls.password?.invalid &&
-          loginForm.controls.password?.touched && mouseoverLogin
+          loginForm.controls.password?.touched &&
+          mouseoverLogin
         "
         >Required</em
       >
@@ -46,7 +49,6 @@
         name="password"
       />
     </div>
-
     <span
       (mouseenter)="mouseoverLogin = true"
       (mouseleave)="mouseoverLogin = false"
