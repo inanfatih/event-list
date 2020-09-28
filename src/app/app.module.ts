@@ -17,6 +17,9 @@ import {
 import { RoutesRoutingModule } from './routes';
 import { AppComponent } from './app.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
+import { SessionListComponent } from './session-list/session-list.component';
+import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
+import { DurationPipe } from './duration.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { CreateSessionComponent } from './create-session/create-session.componen
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,

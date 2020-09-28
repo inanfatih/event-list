@@ -1,8 +1,6 @@
 import { ISession } from './../shared/event.model';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { JsonPipe } from '@angular/common';
-import { invalid } from '@angular/compiler/src/render3/view/util';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-create-session',
@@ -10,6 +8,9 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
   styleUrls: ['./create-session.component.css'],
 })
 export class CreateSessionComponent implements OnInit {
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelAddSession = new EventEmitter();
+
   constructor() {}
 
   newSessionForm: FormGroup;
@@ -54,8 +55,11 @@ export class CreateSessionComponent implements OnInit {
     console.log('value', formValues.value);
     console.log('controls', formValues.controls);
     console.log('session', session);
+
+    this.saveNewSession.emit(session);
   }
   // Asagidaki { [key: string]: any } nin anlami===> bu method bi object donecek ve objenin seklinin ne oldugunun bi onemi yok demek oluyor.
+
   private restrictedWords(control: FormControl): { [key: string]: any } {
     return control.value.includes('foo') ? { restrictedWords: 'foo' } : null;
   }
@@ -73,5 +77,9 @@ export class CreateSessionComponent implements OnInit {
         ? { restrictedWords: invalidWords.join(', ') }
         : null;
     };
+  }
+
+  cancelAddingSession(): void {
+    this.cancelAddSession.emit();
   }
 }

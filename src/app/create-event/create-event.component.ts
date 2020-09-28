@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent implements OnInit {
-  newEventForm;
   newEvent;
 
   isDirty = true;

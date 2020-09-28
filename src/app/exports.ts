@@ -13,3 +13,4 @@ export * from './errors/error404/error404.component';
 export * from './shared/event.model';
 export * from './create-session/create-session.component';
 export * from './shared/restricted-words.validator';
+export * from './session-list/session-list.component';
