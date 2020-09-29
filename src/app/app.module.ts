@@ -1,3 +1,4 @@
+import { JQ_TOKEN } from './common/jQuery.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './user/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,11 @@ import { CreateSessionComponent } from './create-session/create-session.componen
 import { SessionListComponent } from './session-list/session-list.component';
 import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
 import { DurationPipe } from './duration.pipe';
+import { SimpleModalComponent } from './simple-modal/simple-modal.component';
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
+
+// tslint:disable-next-line: no-string-literal
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -35,6 +41,8 @@ import { DurationPipe } from './duration.pipe';
     SessionListComponent,
     CollapsibleWellComponent,
     DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,7 @@ import { DurationPipe } from './duration.pipe';
   ],
   providers: [
     EventRouteActivatorService,
+    { provide: JQ_TOKEN, useValue: jQuery },
     // Asagidakiyle yukaridaki ayni anlama geliyor.
     // { provide: EventRouteActivatorService, useValue: EventRouteActivatorService},
     {
